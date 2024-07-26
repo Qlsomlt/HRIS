@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>HRIS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Update the CSS path to be accessible in the deployment environment -->
+    <link rel="stylesheet" href="HRIS_fix.css">
+
+    <style>
+        .row {
+            max-width: 100%;
+        }
+
+        .row-utama {
+            max-width: 100%;
+        }
+
+        .col {
+            max-width: 100%;
+        }
+
+        .row-keterangan {
+            max-width: 100%;
+            display: flex;
+            justify-content: center;
+            /* Center content horizontally if needed */
+            align-items: flex-start;
+            /* Align items vertically in the center */
+            margin: 20px;
+        }
+
+        .col-keterangan {
+            max-width: 100%;
+            border: 2px solid #0000;
+        }
+
+        .containerCTA {
+            position: fixed;
+            position: -webkit-sticky;
+            background-color: green;
+            background: linear-gradient(to right, #36863a, #297b2d);
+            height: 10%;
+            width: 30%;
+            transform: translate(-50%, -50%);
+            justify-content: space-between;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 0 10px;
+            box-sizing: border-box;
+            text-decoration: none;
+            border-radius: 8px;
+            position: fixed;
+            top: 90%;
+            left: 80%;
+            border: 2px solid #777;
+        }
+
+        .cta-icon {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            color: aliceblue;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        .cta-text {
+            margin: 0;
+            font-size: 15px;
+            color: aliceblue;
+        }
+
+        .image-container-HRIS {
+            width: 50%;
+            height: 30%;
+            object-fit: contain;
+        }
+
+        .image-container-HRIS img {
+            margin-bottom: 80px;
+            border-radius: 8px;
+            border: 2px solid #0000;
+        }
+
+        .container-title {
+            text-align: center;
+        }
+
+        .container-Keterangan-HRIS {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-sizing: border-box;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 100%;
+            background-color: #45a049;
+            background: linear-gradient(to right, #45a049, #6bd170);
+            display: flex;
+            flex-direction: row;
+            /* Align items in a row */
+            align-items: center;
+            /* Align items vertically in the center */
+            border-radius: 10px;
+        }
+
+        .text-container-HRIS {
+            flex: 1;
+            padding-right: 20px;
+            width: 40%;
+            height: 40%;
+            max-width: 80%;
+            padding-top: 10px;
+            margin-right: 20px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .text-container-HRIS h3 {
+            color: #fff;
+            font-size: 1.5em;
+        }
+
+        .image-container-HRIS {
+            flex: 0 0 auto;
+            flex: 1;
+        }
+
+        .image-container-HRIS img {
+            max-width: 100%;
+            margin-top: 100px;
+            height: auto;
+            /* Maintain aspect ratio of the image */
+            display: block;
+        }
+
+        .row-fitur {
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .text-fitur {
+            margin-bottom: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .card-fitur {
+            max-width: 100%;
+            padding-left: 150px;
+            padding-top: 40px;
+        }
+
+        .card {
+            width: 12rem;
+        }
+
+        .row-carousel {
+            max-width: 100%;
+            height: 70vh;
+        }
+
+        .col-carousel {
+            max-width: 100%;
+            height: 70vh;
+        }
+
+        .container-carousel-fitur {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-sizing: border-box;
+            margin: 0 auto;
+            background-color: #45a049;
+            background: linear-gradient(to right, #45a049, #4eb853);
+            height: 100%;
+            padding: 20px;
+        }
+
+        .carousel {
+            align-items: center;
+            max-width: 100%;
+            padding: 20px;
+            height: 80vh;
+        }
+
+        .carousel-inner {
+            display: flex;
+            flex: 1s;
+            width: 90vh;
+            height: 50vh;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+
+        }
+
+        .bi {
+            margin-left: 50px;
+
+        }
+
+        .carousel-item {
+            padding-left: 80px;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            object-fit: contain;
+            padding-bottom: 20px;
+            box-sizing: border-box;
+            margin-top: 70px;
+            border-radius: 8px;
+
+        }
+
+        .col-item-carousel {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+
+        .text-carousel {
+            transform: translateY(-50%);
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border-radius: 5px;
+            box-sizing: border-box;
+            display: flex;
+            flex: 1;
+            margin-right: 70px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .col-text-carousel {
+            max-width: 70%;
+        }
+
+        .text-fitur-carousel {
+            transform: translateY(-50%);
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            justify-content: center;
+            padding-top: 400px;
+            display: flex;
+            flex: 1;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container-fitur {
+                flex-direction: column;
+            }
+
+            .text-right-container {
+                position: static;
+                transform: none;
+                margin-top: 20px;
+                width: 80%;
+                text-align: center;
+            }
+        }
+
+        .row-testimoni {
+            max-width: 100%;
+        }
+
+        .col-testimoni {
+            max-width: 100%;
+        }
+
+        .container-testimoni {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-testimoni-card {
+            justify-content: space-between;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 600px;
+            gap: 30px;
+        }
+
+        .card-testimoni {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin: 10px 0;
+            padding: 20px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card-header {}
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .cart-title {}
+
+        .card-text {}
+
+        .card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .get-closing {
+            max-width: 100%;
+            text-align: center;
+            padding-bottom: 20px;
+            padding-top: 20px;
+        }
+
+        .container-get {
+            width: 40%;
+            margin: auto;
+            padding: 20px;
+            max-width: 60%;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            border-radius: 8px;
+            border: 1px solid #45a049;
+        }
+
+        .container-get h2 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .container-get p {
+            font-size: 1.1em;
+            color: #777;
+            background-color: #ccc;
+            border-radius: 8px;
+        }
+
+        .cta-get-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+
+        .cta-get-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="text-white p-3"
+        style="background-color: rgb(66, 244, 111); height: 80px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; padding: 20px">
+            <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+                <!-- Update the image path to be accessible in the deployment environment -->
+                <img src="logo-integra-small.png" alt="Avatar Logo" style="width:100px;">
+            </a>
+        </div>
+        <div style="padding-left: 10px; align-items:center; display:flex; justify-content:space-between; padding:20px">
+            <!---Facebook-->
+            <a href="#" style="margin-left: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill=#ffffff class="bi bi-facebook" viewBox="0 0 16 16">
+                    <path
+                        d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951" />
+                </svg>
+            </a>
+            <!--Instagram-->
+            <a href="#" style="margin-left: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill=#ffffff class="bi bi-instagram" viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                </svg>
+            </a>
+            <!---Youtube-->
+            <a href="#" style="margin-left: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill=#ffffff class="bi bi-youtube" viewBox="0 0 16 16">
+                    <path
+                        d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
+                </svg>
+                <!---WA-->
+                <a href="#" style="margin-left: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill=#ffffff class="bi bi-whatsapp" viewBox="0 0 16 16">
+                        <path
+                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                    </svg>
+                </a>
+                <!---Email-->
+                <a href="#" style="margin-left: 20px;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        fill=#ffffff class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                    </svg>
+                </a>
+        </div>
+    </header>
+
+
+    <main>
+        <!-- CTA -->
+        <div class="containerCTA">
+            <a href="#"
+                style="border-radius: 90px; display: flex; justify-content: center; align-items: center; text-decoration: none;">
+                <div class="cta-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#ffffff" class="bi bi-whatsapp"
+                        viewBox="0 0 16 16" style="margin: auto;">
+                        <path
+                            d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
+                    </svg>
+                    <h4 class="cta-text" style="padding-left:20px">
+                        Ada yang bisa kami bantu
+                    </h4>
+                </div>
+            </a>
+        </div>
+        <!--main--->
+        <div class="row-utama gx-5 row-gap-5">
+            <!--title-->
+            <div class="row" id="row1">
+                <div class="container-title" style="width: 100%;">
+                    <H1
+                        style="text-align: center; margin: 0; padding: 0; line-height: 100px; font-family:Arial, Helvetica, sans-serif;font-size:2.5em;">
+                        Aplikasi Human Resource
+                        Information System (HRIS)
+                    </H1>
+                </div>
+            </div>
+            <div class="row-keterangan" id="row2">
+                <div class="col-keterangan">
+                    <div class="container-Keterangan-HRIS">
+                        <div class="text-container-HRIS">
+                            <h3>
+                                Human Resource Information System (HRIS) adalah sistem berbasis teknologi informasi
+                                yang digunakan untuk mengelola berbagai fungsi sumber daya manusia dalam sebuah
+                                organisasi. HRIS mengintegrasikan berbagai proses HR seperti rekrutmen, pelatihan,
+                                manajemen gaji, evaluasi kinerja, dan administrasi kehadiran karyawan ke dalam satu
+                                sistem terpadu.
+                            </h3>
+                        </div>
+                        <div class="image-container-HRIS">
+                            <img src="hr-officer-job-description-template-RLnC8x.jpg"
+                                alt="HR Officer Job Description">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--title-->
+            <hr style="border: 0; height: 8px; background-color: #000; margin: 8px auto; width: 85%; margin-top:30px">
+            <!--fitur-->
+            <div class="row-fitur justify-content-center" id="fitur">
+                <H1 class="text-fitur">
+                    Fitur yang dapat ditawarkan Aplikasi HRIS
+                </H1>
+                <div class="card-fitur">
+                    <div class="row" style="padding:20px;">
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 20px;">
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card">
+                                <img src="..." class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the
+                                        bulk of the card's content.</p>
+                                    <a href="#" class="cta-get-button">Get Started Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--fitur-->
+
+            <!--carousalcontohfitur-->
+            <div class="row-carousel" id="row3">
+                <div class="col-carousel">
+                    <div class="container-carousel-fitur">
+                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="4000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="40vh"
+                                        fill="currentColor" class="bi bi-database" viewBox="0 0 16 16"
+                                        style="margin-top: 30px;">
+                                        <path
+                                            d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525" />
+                                    </svg>
+                                    <div class="text-carousel">
+                                        <p>
+                                            Pengelolaan Data Karyawan: HRIS menyimpan informasi personal karyawan,
+                                            riwayat pekerjaan, data gaji, dan informasi terkait lainnya dalam satu
+                                            database yang terpusat.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="40vh"
+                                        style="margin-top: 30px;" fill="currentColor" class="bi bi-table"
+                                        viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 2h-4v3h4zm0 4h-4v3h4zm0 4h-4v3h3a1 1 0 0 0 1-1zm-5 3v-3H6v3zm-5 0v-3H1v2a1 1 0 0 0 1 1zm-4-4h4V8H1zm0-4h4V4H1zm5-3v3h4V4zm4 4H6v3h4z" />
+                                    </svg>
+                                    <div class="text-carousel">
+                                        <p>
+                                            Manajemen Rekrutmen: Sistem ini membantu dalam proses rekrutmen mulai
+                                            dari pengumuman lowongan kerja, seleksi pelamar, hingga onboarding
+                                            karyawan baru.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="40vh"
+                                        fill="currentColor" class="bi bi-calendar-plus" viewBox="0 0 16 16"
+                                        style="margin-top: 30px;">
+                                        <path
+                                            d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7" />
+                                        <path
+                                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                    </svg>
+                                    <div class="text-carousel">
+                                        <p>
+                                            Penggajian dan Manfaat: HRIS mengotomatisasi perhitungan gaji,
+                                            pemotongan pajak, dan manajemen manfaat karyawan seperti asuransi
+                                            kesehatan dan program pensiun.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="40vh"
+                                        fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16"
+                                        style="margin-top: 30px;">
+                                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z" />
+                                        <path
+                                            d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3" />
+                                    </svg>
+                                    <div class="text-carousel">
+                                        <p>
+                                            Pelatihan dan Pengembangan: HRIS memungkinkan perencanaan, pelaksanaan,
+                                            dan pelacakan program pelatihan dan pengembangan karyawan.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="50vh"
+                                        fill="currentColor" class="bi bi-bar-chart-fill" viewBox="0 0 16 16"
+                                        style="margin-top: 30px;">
+                                        <path
+                                            d="M1 11a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" />
+                                    </svg>
+                                    <div class="text-carousel" style="margin-bottom: 40px;">
+                                        <p>
+                                            Manajemen Kinerja: Sistem ini memfasilitasi penilaian kinerja karyawan,
+                                            feedback, dan pengelolaan tujuan kerja.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="40vh" height="40vh"
+                                        fill="currentColor" class="bi bi-calendar-check-fill" viewBox="0 0 16 16"
+                                        style="margin-top: 30px;">
+                                        <path
+                                            d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708" />
+                                    </svg>
+                                    <div class="text-carousel">
+                                        <p>
+                                            Kepatuhan dan Pelaporan: HRIS membantu organisasi mematuhi regulasi
+                                            ketenagakerjaan dan menghasilkan laporan yang diperlukan untuk audit dan
+                                            kepatuhan
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"
+                                    style="color: #000000;"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"
+                                    style="color: #000000;"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="col-text-carousel">
+                            <H1 class="text-fitur-carousel">
+                                Contoh Fitur yang terdapat di HRIS
+                            </H1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--carousalcontohfitur-->
+        <hr
+            style="border: 0; height: 8px; background-color: #000; margin: 8px auto; width: 85%; margin-bottom:30px; margin-top:30px">
+        <!---Testimoni-->
+        <div class="row-testimoni" id="row4">
+            <div class="col-testimoni">
+                <div class="container-testimoni">
+                    <div class="col-testimoni-card">
+                        <div class="card-testimoni text-center">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <div class="card-body">
+                                <img src="">
+                                <h5 class="card-title">Nama</h5>
+                                <p class="card-text">Testimoni
+                                </p>
+                            </div>
+                        </div>
+                        <div class="card-testimoni text-center">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <div class="card-body">
+                                <img src="">
+                                <div class="keterangan-card">
+                                    <h5 class="card-title">Nama</h5>
+                                    <p class="card-text">Testimoni</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-testimoni text-center">
+                            <div class="card-header">
+                                Featured
+                            </div>
+                            <div class="card-body">
+                                <img src="">
+                                <div class="keterangan-card">
+                                    <h5 class="card-title">Nama</h5>
+                                    <p class="card-text">Testimoni</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--ganti col dengan col-testimani card-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!---Testimoni-->
+        <hr style="border: 0; height: 8px; background-color: #000; margin: 8px auto; width: 85%; margin-top:30px">
+        </div>
+        <section class="get-closing">
+            <div class="container-get">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Don't miss out on the opportunity to elevate your operations and stay ahead of the
+                    competition. Join thousands of satisfied customers who have already made the switch and seen
+                    remarkable results.</p>
+                <a href="#" class="cta-get-button">Get Started Now</a>
+            </div>
+        </section>
+        <!--testimoni-->
+        <!--card demo-->
+        <section class="demo">
+
+        </section>
+        <!--card demo-->
+    </main>
+
+    <footer style="background-color: #000000; padding: 20px; text-align: center; border-top: 1px solid #dee2e6;">
+        <p>© 2024 Your Website Name. All rights reserved.</p>
+        <p>Designed by Your Name | <a href="/privacy-policy" style="color: #ffffff; text-decoration: none;">Privacy
+                Policy</a></p>
+    </footer>
+</body>
+
+</html>
